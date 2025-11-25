@@ -30,7 +30,12 @@ WORKDIR /srv/build
 COPY src ./src
 COPY cmake ./cmake
 COPY recompile.sh CMakeLists.txt CMakePresets.json vcpkg.json ./
+
+# Adiciona permissão de execução
 RUN chmod +x recompile.sh
+
+# Define TERM e executa o script
+ENV TERM=xterm
 RUN ./recompile.sh "/opt"
 
 # Stage 3: execute
