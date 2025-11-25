@@ -39,20 +39,6 @@ services:
       database:
         condition: service_healthy
 
-  login:
-    image: crystalserver/login-server:latest
-    restart: unless-stopped
-    ports:
-      - '$LOGIN_HTTP_PORT:$LOGIN_HTTP_PORT'
-      - '$LOGIN_GRPC_PORT:$LOGIN_GRPC_PORT'
-    env_file:
-      - '.env'
-    networks:
-      - crystalserver-net
-    depends_on:
-      database:
-        condition: service_healthy
-
 volumes:
   db-volume:
 
