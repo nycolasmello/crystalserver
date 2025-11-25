@@ -30,6 +30,7 @@ WORKDIR /srv/build
 COPY src ./src
 COPY cmake ./cmake
 COPY recompile.sh CMakeLists.txt CMakePresets.json vcpkg.json ./
+RUN chmod +x recompile.sh
 RUN ./recompile.sh "/opt"
 
 # Stage 3: execute
