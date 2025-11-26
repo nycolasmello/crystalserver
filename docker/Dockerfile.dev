@@ -41,6 +41,7 @@ RUN ./recompile.sh "/opt"
 # Stage 3: execute
 FROM ubuntu:24.04 AS prod
 COPY --from=build /srv/build/build/linux-release/bin/crystalserver /bin/crystalserver
+RUN chmod +x /srv/crystalserver/start.sh
 WORKDIR /srv/crystalserver
 ENTRYPOINT ["/srv/crystalserver/start.sh", "crystalserver"]
 
